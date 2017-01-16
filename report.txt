@@ -1,0 +1,65 @@
+Carolyn Bergdolt
+Final Report
+14 December 2015
+
+(I worked by myself for this lab.)
+
+When the user runs this program, the first thing that will show up in 
+the graphics window is a little orange box with an instruction to click 
+the lightswitch to turn on the light.  After clicking the switch, the 
+user will see a room, and a message telling them the the objective is to 
+collect clues and get out of the room.  The user can click on any of the 
+objects in the room to interact with them and look for clues, and the 
+program gives hints/instructions along the way (although it is assumed 
+that the user has a little common sense and is able to put some of the 
+clues together without the aid of hints in some places).  When the user has 
+finally collected all the clues and used the key to open the door, the 
+door will open, and a congratulatory message will display.  The user can 
+terminate the program by pressing 'q' or revisit any of the places in 
+the room, if they so choose.  
+
+From a programming standpoint, it is a little more complicated.  The 
+most important feature is a struct that is used to hold the status of 
+each of the clues so that the "room" can respond appropriately.  
+Theoretically, this struct could be expanded and used in any subsequent 
+levels, so that when a user escapes from one room, he moves on to the 
+next.  
+
+The rest of the program is slightly more tailored to the specific level, 
+but many of the concepts could be recycled in other levels.  The main 
+function only calls the lightswitch functions and creates the struct.  
+it then passes the struct to the function room, and everything else 
+takes place within room.  The room function begins by calling basicRoom, 
+which sets up the basic features of the room (the window, the door, the 
+cabinet, and the rug).  This function executes the same set of commands 
+throughout the program, with the exception of the very end when the door 
+has been opened.  The only other thing that room does is wait for user 
+input, detecting if the user has clicked the window, cabinet, rug, or 
+door, and calling the functions window, cabinet, rug, and door, 
+respectively.  
+
+Each of these fucntions offers a "close-up" view of the element that was 
+clicked on, and allows the user to interact with the element.  For 
+example, window allows the user to pick up the handle off the 
+windowsill, cabinet lets the user put the missing handle on the cabinet, 
+and open the door to see what is inside (a color card), rug shows the 
+user a secret compartment that requires the code from the color card to 
+open, and door lets the user unlock the door.  All of this is 
+accomplished using a series of if statements to respond 
+appropriately to the status of each clue and detect where the user's 
+click occurred.  Each of these functions also contains a call to 
+backarrow, which draws a back arrow that the user can click to return to 
+the main room screen.  
+
+This program also contains a few auxiliary functions, like keyhole, key, 
+and colorcard, which eliminate the "busy" lines of code within the four 
+main sub-functions.  Functions handle and opendoor are two slightly more 
+complicated auxiliary functions, since their purpose is dependent upon 
+the status of the clues.  
+
+Since this is a highly visual program, I ran this program repeatedly 
+throughout the coding process to verify that its output is correct.  
+During the final stages, I experimented with clicking the room elements 
+in unexpected orders, to ensure that the program would respond 
+appropriately to user input that strayed from the logically 
+chronological path.  
